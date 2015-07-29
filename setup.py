@@ -11,11 +11,11 @@ from npr_sfs import __author__, __version__, __license__
 
 setup(
         name = 'npr_sfs',
-        version          = __version__,
-        description      = 'Sample implementations of Shape-From-Shading techniques for NPR.',
-        license          = __license__,
-        author           = __author__,
-        url              = 'https://github.com/tody411/NPR-SFS.git',
-        packages=['npr_sfs'],
+        version = __version__,
+        description = 'Sample implementations of Shape-From-Shading techniques for NPR.',
+        license = __license__,
+        author = __author__,
+        url = 'https://github.com/tody411/NPR-SFS.git',
+        packages = find_packages(),
         )
 
