@@ -17,6 +17,7 @@ setup(
         author = __author__,
         url = 'https://github.com/tody411/NPR-SFS.git',
         packages = find_packages(),
+        package_data={"npr_sfs": ["datasets/*.png"],},
         #data_files=[('npr_sfs', ['npr_sfs/datasets/*.png'])],
         )
 
