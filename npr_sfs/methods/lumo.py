@@ -1,5 +1,3 @@
-
-
 # -*- coding: utf-8 -*-
 ## @package npr_sfs.lumo
 #
@@ -7,12 +5,12 @@
 #  @author      tody
 #  @date        2015/07/29
 
-"""Usage: lumo.py <input> [-h] [-o output] [--quiet]
+"""Usage: lumo.py [<input>] [-h] [-o output] [--quiet]
 
-<input>      input image.
--h --help    show this
--o output    specify output file [default: ./lumo.png]
---quiet      No GUI, [default: False]
+<input>        Input image.
+-h --help      Show this help.
+-o output    Save output files. [default: False]
+--quiet        No GUI, [default: False]
 
 """
 from docopt import docopt
@@ -23,12 +21,13 @@ from pyamg.gallery import laplacian
 
 import matplotlib.pyplot as plt
 
-from npr_sfs.io.image import loadAlpha
+from npr_sfs.io.image import loadAlpha, saveRGBA, saveGray
 from npr_sfs.cv.normal import normalToColor
 from npr_sfs.util.timer import timing_func
 from npr_sfs.np.norm import normalizeVectors
+from npr_sfs.plot.window import showMaximize
 
-from npr_sfs.datasets.loader import loadData
+from npr_sfs.datasets.loader import dataFile
 
 
 ## Silhouette normal from the alpha mask.
@@ -57,55 +56,56 @@ def computeSilhouetteNormal(A_8U, sigma=7.0):
     wgxy = np.zeros((height, width))
     wgxy[:, :] = Nxy_norm[:, :] / (0.001 + gxy_norm[:, :])
 
-    #N = wgxy * N
     N_32F[:, :, 0] = wgxy[:, :] * N_32F[:, :, 0]
     N_32F[:, :, 1] = wgxy[:, :] * N_32F[:, :, 1]
 
     return N_32F
 
 
-def makeConstraints(A_8U, alpha_th=20, w_cons=1e+10):
-    N0_32F = computeSilhouetteNormal(A_8U)
-
+## Normal constraints from the alpha mask and the initial normal.
+def normalConstraints(A_8U, N0_32F, alpha_th=20, w_sil=1e+10):
     h, w = A_8U.shape
 
     L = laplacian.poisson((h, w))
     L_lil = L.tolil()
 
     A_flat = A_8U.flatten()
-    silhouette_ids = np.where(A_flat < alpha_th)
+    sil_ids = np.where(A_flat < alpha_th)
 
-    for silhouette_id in silhouette_ids:
-        #L_lil[silhouette_id, :] = 0.0
-        L_lil[silhouette_id, silhouette_id] = w_cons
+    for sil_id in sil_ids:
+        L_lil[sil_id, sil_id] = w_sil
 
     A = L_lil.tocsr()
 
     N0_flat = N0_32F.reshape(h * w, 3)
     N0_flat[A_flat > alpha_th, :] = 0.0
-    b = w_cons * N0_flat
+    b = w_sil * N0_flat
 
-    return A, b, N0_32F
+    return A, b
 
 
-@timing_func
-def solvePyamg(A, b):
+def solveMG(A, b):
     ml = pyamg.smoothed_aggregation_solver(A)
 
     x = np.zeros(b.shape)
     for bi in range(3):
-        x[:, bi] = ml.solve(b[:,bi], tol=1e-10)
+        x[:, bi] = ml.solve(b[:, bi], tol=1e-10)
     return x
 
 
-def lumoAlphaMask(A_8U):
+def estimateNormal(A_8U):
     h, w = A_8U.shape
-    A, b, N0_32F = makeConstraints(A_8U)
+    N0_32F = computeSilhouetteNormal(A_8U)
+    A, b = normalConstraints(A_8U, N0_32F)
 
-    N_flat = solvePyamg(A, b)
+    N_flat = solveMG(A, b)
     N_flat = normalizeVectors(N_flat)
     N_32F = N_flat.reshape(h, w, 3)
 
+    return N0_32F, N_32F
+
+
+def showResult(A_8U, N0_32F, N_32F):
     plt.subplot(131)
     plt.title('Alpha Mask')
     plt.imshow(A_8U)
@@ -115,23 +115,38 @@ def lumoAlphaMask(A_8U):
     plt.imshow(normalToColor(N0_32F))
 
     plt.subplot(133)
-    plt.title('Estimate Normal')
+    plt.title('Estimated Normal')
     plt.imshow(normalToColor(N_32F, A_8U))
-    plt.show()
-
-    return A_8U
+    showMaximize()
 
 
-def lumoFile(file_path):
-    A_8U = loadAlpha(file_path)
-    lumoAlphaMask(A_8U)
+def main(input_file, output_file, quiet):
+    A_8U = loadAlpha(input_file)
+    N0_32F, N_32F = estimateNormal(A_8U)
+
+    if output_file:
+        A_file = input_file.replace(".png", "_A.png")
+        saveGray(A_8U, A_file)
+
+        N0_file = input_file.replace(".png", "_N0.png")
+        saveRGBA(normalToColor(N0_32F, A_8U), N0_file)
+
+        N_file = input_file.replace(".png", "_N.png")
+        saveRGBA(normalToColor(N_32F, A_8U), N_file)
+
+    if quiet:
+        return
+
+    showResult(A_8U, N0_32F, N_32F)
 
 if __name__ == '__main__':
-#     args = docopt(__doc__,'TreeBox --quiet=True')
-#     print args.get('--quiet')
-    import sys
-    if len(sys.argv) > 1:
-        lumoFile(sys.argv[1])
+    args = docopt(__doc__)
+
+    if args['<input>']:
+        input_file = args['<input>']
     else:
-        A_8U = loadData("ThreeBox")
-        lumoAlphaMask(A_8U)
+        input_file = dataFile("ThreeBox")
+
+    output_file = args['-o']
+    quiet = args['--quiet']
+    main(input_file, output_file, quiet)
