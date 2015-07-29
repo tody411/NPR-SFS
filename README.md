@@ -2,7 +2,7 @@
 NPR Shape-From-Shading techniques.
 ====
 
-Part of implementations of Shape-From-Shading techniques for NPR.
+Sample implementations of Shape-From-Shading techniques for NPR.
 
 * **Lumo: Illumination for Cel Animation** [Johnston et al. 2002]
     - Normal estimation from silhouettes.
