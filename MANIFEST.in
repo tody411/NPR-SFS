@@ -1,1 +1,1 @@
-recursive-include npr_sfs *.png
+recursive-include npr_sfs/datasets *.png
