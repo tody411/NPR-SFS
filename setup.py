@@ -15,7 +15,7 @@ setup(
         description      = 'Sample implementations of Shape-From-Shading techniques for NPR.',
         license          = __license__,
         author           = __author__,
-        url              = 'https://github.com/junion-org/pip_github_test.git',
+        url              = 'https://github.com/tody411/NPR-SFS.git',
         packages=['inversetoon'],
         )
 
