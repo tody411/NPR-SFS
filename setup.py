@@ -16,6 +16,6 @@ setup(
         license          = __license__,
         author           = __author__,
         url              = 'https://github.com/tody411/NPR-SFS.git',
-        packages=['inversetoon'],
+        packages=['npr_sfs'],
         )
 
