@@ -17,6 +17,6 @@ setup(
         author = __author__,
         url = 'https://github.com/tody411/NPR-SFS.git',
         packages = find_packages(),
-        py_modules = ['npr_sfs'],
+        data_files=[('images', ['npr_sfs/datasets/*.png'])]
         )
 
