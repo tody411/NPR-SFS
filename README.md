@@ -11,26 +11,34 @@ Sample implementations of Shape-From-Shading techniques for NPR.
 
 
 ## Result
-### Under Construction
+*Status*: Under construction.
 <!-- ### Lit-Sphere
 ![Lit-Sphere](LitSphere/results/LitSphere.png) -->
 
 ## Installation
 
-Installation for **Windows** is slightly complicated due to the lack of package manager.
+*Note*: The program was only tested on **Windows** with **Python2.7**.
+**Linux** and **Mac OS** are not officially supported,
+but the following instructions might be helpful for installing on those environments.
 
-First, please install required python modules from http://www.lfd.uci.edu/~gohlke/pythonlibs/.
+### Dependencies
+Please install the following required python modules.
 
-* NumPy: 1.8.2
-* SciPy: 0.15.1
-* matplotlib: 1.4.3rc1
-* OpenCV: 2.4.10
-* PyAMG: 2.2.1
+* **NumPy**
+* **SciPy**
+* **matplotlib**
+* **OpenCV**
+* **PyAMG**
+* **docopt**
 
-.. code-block::
+For 64-bit Windows, you can download the binaries from [Unofficial Windows Binaries for Python Extension Packages](http://www.lfd.uci.edu/~gohlke/pythonlibs/).
 
-  // Launch VC 20xx command prompt
-  $ python setup.py install
+### Install main modules
+You can use pip command for installing main modules.
+Please run the following command from the shell.
+``` bash
+  > pip install git+https://github.com/tody411/NPR-SFS.git
+```
 
 ## Usage
 ### Directory Structure
