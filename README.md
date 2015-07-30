@@ -77,7 +77,7 @@ The following **CLI** examples can be tested from npr_sfs/methods directory.
 
 ## Future work
 
-* [ ] Update results.
+* [ ] Update result section.
 * [ ] Implement more methods.
 * [ ] Comparison module for summarizing the results.
 * [ ] Provide API document.
