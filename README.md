@@ -7,7 +7,7 @@ Sample implementations of Shape-From-Shading techniques for NPR.
 * **Lumo: Illumination for Cel Animation** [Johnston et al. 2002]
     - Normal estimation from silhouettes.
 * **Image-Based Material Editing** [Kahn et al. 2006]
-    - Normal estimation from illumination.
+    - Shape recovery section.
 
 
 ## Result
@@ -31,7 +31,7 @@ Please install the following required python modules.
 * **PyAMG**
 * **docopt**
 
-For 64-bit Windows, you can download the binaries from [Unofficial Windows Binaries for Python Extension Packages](http://www.lfd.uci.edu/~gohlke/pythonlibs/).
+For 64-bit Windows, you can download the binaries from [**Unofficial Windows Binaries for Python Extension Packages**](http://www.lfd.uci.edu/~gohlke/pythonlibs/).
 
 ### Install main modules
 You can use pip command for installing main modules.
@@ -44,7 +44,27 @@ Please run the following command from the shell.
 ### Directory Structure
 * npr_sfs: main package.
     - methods: SFS main modules.
-        - lumo.py: **Lumo** implementation.
+
+### CLI
+Each method implementation in npr_sfs/methods has CLI (provided by **docopt**) to run the program.
+
+**No args**: Simple demo with installed datasets.
+``` bash
+  > python lumo.py
+```
+
+**input**: You can specify an input image file as the command args.
+``` bash
+  > python lumo.py ../datasets/Blob1.png
+```
+
+You can save output image:
+
+``` bash
+  > python lumo.py -o
+```
+
+The output normal image will be saved in the same directory of the input file.
 
 ## License
 

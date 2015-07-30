@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 ## @package npr_sfs.lumo
 #
-#  Implementation of Lumo [Johnston et al. 2002].
+#  Lumo [Johnston et al. 2002].
 #  @author      tody
 #  @date        2015/07/29
 
-"""Usage: lumo.py [<input>] [-h] [-o output] [--quiet]
+"""Usage: lumo.py [<input>] [-h] [-o] [-q]
 
 <input>        Input image.
 -h --help      Show this help.
--o output    Save output files. [default: False]
---quiet        No GUI, [default: False]
+-o --output    Save output files. [default: False]
+-q --quiet     No GUI, [default: False]
 
 """
 from docopt import docopt
@@ -28,6 +28,9 @@ from npr_sfs.np.norm import normalizeVectors
 from npr_sfs.plot.window import showMaximize
 
 from npr_sfs.datasets.loader import dataFile
+
+from npr_sfs.util.logger import getLogger
+logger = getLogger(__name__)
 
 
 ## Silhouette normal from the alpha mask.
@@ -106,6 +109,8 @@ def estimateNormal(A_8U):
 
 
 def showResult(A_8U, N0_32F, N_32F):
+    logger.info("showResult")
+
     plt.subplot(131)
     plt.title('Alpha Mask')
     plt.imshow(A_8U)
@@ -120,19 +125,19 @@ def showResult(A_8U, N0_32F, N_32F):
     showMaximize()
 
 
+def saveResult(input_file, A_8U, N_32F):
+    logger.info("saveResult")
+
+    N_file = input_file.replace(".png", "_N.png")
+    saveRGBA(normalToColor(N_32F, A_8U), N_file)
+
+
 def main(input_file, output_file, quiet):
     A_8U = loadAlpha(input_file)
     N0_32F, N_32F = estimateNormal(A_8U)
 
     if output_file:
-        A_file = input_file.replace(".png", "_A.png")
-        saveGray(A_8U, A_file)
-
-        N0_file = input_file.replace(".png", "_N0.png")
-        saveRGBA(normalToColor(N0_32F, A_8U), N0_file)
-
-        N_file = input_file.replace(".png", "_N.png")
-        saveRGBA(normalToColor(N_32F, A_8U), N_file)
+        saveResult(input_file, A_8U, N_32F)
 
     if quiet:
         return
@@ -147,6 +152,6 @@ if __name__ == '__main__':
     else:
         input_file = dataFile("ThreeBox")
 
-    output_file = args['-o']
+    output_file = args['--output']
     quiet = args['--quiet']
     main(input_file, output_file, quiet)

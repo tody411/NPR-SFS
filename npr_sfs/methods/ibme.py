@@ -1,10 +1,17 @@
+# -*- coding: utf-8 -*-
+## @package npr_sfs.methods.ibme
+#
+#  Image-Based Material Editing [Kahn et al. 2006].
+#  @author      tody
+#  @date        2015/07/30
 
-"""Usage: ibme.py [<input>] [-h] [-o output] [--quiet]
+
+"""Usage: ibme.py [<input>] [-h] [-o] [-q]
 
 <input>        Input image.
 -h --help      Show this help.
--o output    Save output files. [default: False]
---quiet        No GUI, [default: False]
+-o --output    Save output files. [default: False]
+-q --quiet     No GUI, [default: False]
 
 """
 from docopt import docopt
@@ -15,10 +22,13 @@ import cv2
 import matplotlib.pyplot as plt
 
 from npr_sfs.datasets.loader import dataFile
-from npr_sfs.io.image import loadRGBA, saveGray
+from npr_sfs.io.image import loadRGBA, saveGray, saveRGBA
 from npr_sfs.cv.image import luminance, alpha
 from npr_sfs.plot.window import showMaximize
 from npr_sfs.cv.normal import normalizeImage, normalToColor
+
+from npr_sfs.util.logger import getLogger
+logger = getLogger(__name__)
 
 
 def computeGradientNormals(I_32F, sigma=10.0):
@@ -57,7 +67,7 @@ def estimateNormal(I_32F):
 
 
 def showResult(C_8U, I_32F, N_32F, A_8U):
-
+    logger.info("showResult")
     plt.subplot(131)
     plt.title('Original Color')
     plt.imshow(C_8U)
@@ -72,6 +82,12 @@ def showResult(C_8U, I_32F, N_32F, A_8U):
     showMaximize()
 
 
+def saveResult(input_file, A_8U, N_32F):
+    logger.info("saveResult")
+    N_file = input_file.replace(".png", "_N.png")
+    saveRGBA(normalToColor(N_32F, A_8U), N_file)
+
+
 def main(input_file, output_file, quiet):
     C_8U = loadRGBA(input_file)
     A_8U = alpha(C_8U)
@@ -79,8 +95,7 @@ def main(input_file, output_file, quiet):
     N_32F = estimateNormal(I_32F)
 
     if output_file:
-        I_file = input_file.replace(".png", "_I.png")
-        saveGray(I_32F, I_file)
+        saveResult(input_file, A_8U, N_32F)
 
     if quiet:
         return
@@ -95,6 +110,6 @@ if __name__ == '__main__':
     else:
         input_file = dataFile("ThreeBox")
 
-    output_file = args['-o']
+    output_file = args['--output']
     quiet = args['--quiet']
     main(input_file, output_file, quiet)
