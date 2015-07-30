@@ -49,3 +49,7 @@ Temporary Items
 
 # Python
 *.pyc
+
+# Sublime
+*.sublime-project
+*.sublime-workspace
