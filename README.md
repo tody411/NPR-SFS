@@ -80,6 +80,7 @@ The following **CLI** examples can be tested from npr_sfs/methods directory.
 * [ ] Update results.
 * [ ] Implement more methods.
 * [ ] Comparison module for summarizing the results.
+* [ ] Provide API document.
 
 ## License
 
