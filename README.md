@@ -75,7 +75,7 @@ The following **CLI** examples can be tested from npr_sfs/methods directory.
   > python lumo.py -q -o
 ```
 
-## Future work
+## Future tasks
 
 * [ ] Update result section.
 * [ ] Implement more methods.
