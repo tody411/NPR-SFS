@@ -10,7 +10,7 @@
 <input>        Input image.
 -h --help      Show this help.
 -o --output    Save output files. [default: False]
--q --quiet     No GUI, [default: False]
+-q --quiet     No GUI. [default: False]
 
 """
 from docopt import docopt
