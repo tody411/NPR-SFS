@@ -69,7 +69,7 @@ Each method implementation in npr_sfs/methods has CLI (provided by **docopt**) t
   > python lumo.py -o
 ```
 
-**-q --quiet**: Quiet mode (GUI is not shown).
+**-q --quiet**: Quiet mode (GUIs are not shown).
 ``` bash
   > python lumo.py -q -o
 ```
