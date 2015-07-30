@@ -54,7 +54,7 @@ def alpha(img):
     if len(img.shape) == 2:
         return None
 
-    h, w, cs = img.shape
+    cs = img.shape[2]
     if cs != 4:
         return None
     return img[:, :, 3]

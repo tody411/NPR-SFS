@@ -8,6 +8,7 @@
 
 from matplotlib import pyplot as plt
 
+
 def showMaximize():
     mng = plt.get_current_fig_manager()
     mng.window.state('zoomed')

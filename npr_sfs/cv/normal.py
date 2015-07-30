@@ -6,8 +6,6 @@
 #  @author      tody
 #  @date        2015/07/29
 
-
-
 import numpy as np
 import cv2
 
@@ -48,8 +46,6 @@ def normalToColor(N_32F, A_8U=None):
 
 ## Normalize the normal image.
 def normalizeImage(N_32F):
-    h, w, cs = N_32F.shape
-
     N_flat = N_32F.reshape((-1, 3))
     N_flat_normalized = normalizeVectors(N_flat)
 

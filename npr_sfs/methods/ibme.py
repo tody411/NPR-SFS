@@ -5,7 +5,6 @@
 #  @author      tody
 #  @date        2015/07/30
 
-
 """Usage: ibme.py [<input>] [-h] [-o] [-q]
 
 <input>        Input image.
