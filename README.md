@@ -58,13 +58,16 @@ Each method implementation in npr_sfs/methods has CLI (provided by **docopt**) t
   > python lumo.py ../datasets/Blob1.png
 ```
 
-You can save output image:
+**-o --output**: You can save estimated normal image (The output will be saved in the same directory as the input).
 
 ``` bash
   > python lumo.py -o
 ```
 
-The output normal image will be saved in the same directory of the input file.
+**-q --quiet**: Quiet mode (GUI is not shown).
+``` bash
+  > python lumo.py -q -o
+```
 
 ## License
 
