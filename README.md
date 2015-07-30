@@ -7,7 +7,7 @@ Sample implementations of Shape-From-Shading techniques for NPR.
 * **Lumo: Illumination for Cel Animation** [Johnston et al. 2002]
     - Normal estimation from silhouettes.
 * **Image-Based Material Editing** [Kahn et al. 2006]
-    - Shape recovery section.
+    - The original paper focuses on material editing. In this program, shape recovery part is implemented.
 
 
 ## Result
