@@ -1,13 +1,13 @@
 
-NPR Shape-From-Shading techniques.
+NPR Shape-From-Shading (Python)
 ====
 
-Sample implementations of Shape-From-Shading techniques for NPR.
+Simple Python demos of existing Shape-From-Shading methods for NPR.
 
 * **Lumo: Illumination for Cel Animation** [Johnston et al. 2002]
     - Normal estimation from silhouettes.
 * **Image-Based Material Editing** [Kahn et al. 2006]
-    - The original paper focuses on material editing. In this program, shape recovery part is implemented.
+    - The original paper focuses on material editing. Lopez-Moreno et al. 2006 extends the basis idea for their NPR usage. In this program, shape recovery part is implemented.
 
 
 ## Result
