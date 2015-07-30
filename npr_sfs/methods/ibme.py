@@ -30,15 +30,14 @@ from npr_sfs.util.logger import getLogger
 logger = getLogger(__name__)
 
 
-def computeGradientNormals(I_32F, sigma=10.0):
-    h, w = I_32F.shape
+def computeGradientNormals(D_32F, sigma=5.0):
+    h, w = D_32F.shape
 
-    I_32F_blur = cv2.GaussianBlur(I_32F, (0, 0), sigma)
+    gx = cv2.Sobel(D_32F, cv2.CV_64F, 1, 0, ksize=1)
+    gx = cv2.GaussianBlur(gx, (0, 0), sigma)
 
-    gx = cv2.Sobel(I_32F_blur, cv2.CV_64F, 1, 0, ksize=11)
-    gy = cv2.Sobel(I_32F_blur, cv2.CV_64F, 0, 1, ksize=11)
-
-    N_32F = np.zeros((h, w, 3), dtype=np.float32)
+    gy = cv2.Sobel(D_32F, cv2.CV_64F, 0, 1, ksize=1)
+    gy = cv2.GaussianBlur(gy, (0, 0), sigma)
 
     T_32F = np.zeros((h, w, 3), dtype=np.float32)
     T_32F[:, :, 0] = 1.0
@@ -53,27 +52,35 @@ def computeGradientNormals(I_32F, sigma=10.0):
 
     N_flat = np.cross(T_flat, B_flat)
     N_32F = N_flat.reshape(h, w, 3)
-    N_32F = cv2.GaussianBlur(N_32F, (0, 0), sigma)
     N_32F = normalizeImage(N_32F)
 
     return N_32F
 
 
+def depthRecovery(I_32F, sigma_range=0.1, sigma_space=10,
+                  w_base=0.9, w_detail=0.1):
+    BL = cv2.bilateralFilter(I_32F, -1, sigma_range, sigma_space)
+    DL = I_32F - BL
+    D_32F = w_base * BL + w_detail * DL
+    return D_32F
+
+
 def estimateNormal(I_32F):
-    N_32F = computeGradientNormals(I_32F)
+    D_32F = depthRecovery(I_32F)
+    N_32F = computeGradientNormals(D_32F)
 
-    return N_32F
+    return N_32F, D_32F
 
 
-def showResult(C_8U, I_32F, N_32F, A_8U):
+def showResult(C_8U, D_32F, N_32F, A_8U):
     logger.info("showResult")
     plt.subplot(131)
     plt.title('Original Color')
     plt.imshow(C_8U)
 
     plt.subplot(132)
-    plt.title('Luminance')
-    plt.imshow(I_32F, cmap=plt.cm.gray)
+    plt.title('Depth')
+    plt.imshow(D_32F, cmap=plt.cm.gray)
 
     plt.subplot(133)
     plt.title('Estimated Normal')
@@ -91,7 +98,7 @@ def main(input_file, output_file, quiet):
     C_8U = loadRGBA(input_file)
     A_8U = alpha(C_8U)
     I_32F = luminance(C_8U)
-    N_32F = estimateNormal(I_32F)
+    N_32F, D_32F = estimateNormal(I_32F)
 
     if output_file:
         saveResult(input_file, A_8U, N_32F)
@@ -99,7 +106,7 @@ def main(input_file, output_file, quiet):
     if quiet:
         return
 
-    showResult(C_8U, I_32F, N_32F, A_8U)
+    showResult(C_8U, D_32F, N_32F, A_8U)
 
 if __name__ == '__main__':
     args = docopt(__doc__)
