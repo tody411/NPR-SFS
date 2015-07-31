@@ -75,6 +75,10 @@ The following **CLI** examples can be tested from npr_sfs/methods directory.
   > python lumo.py -q -o
 ```
 
+## API Document
+
+[**npr_sfs API Document**] (http://tody411.github.io/NPR-SFS/index.html)
+
 ## Future tasks
 
 * [ ] Update result section.
