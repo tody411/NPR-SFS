@@ -67,7 +67,9 @@ def saveImage(file_path, img):
 def loadNormal(file_path):
     C_8U = loadRGBA(file_path)
     A_8U = alpha(C_8U)
-    C_8U = cv2.bilateralFilter(C_8U, 5, 0.1, 5)
+    rgb_8U = rgb(C_8U)
+    rgb_8U = cv2.bilateralFilter(rgb_8U, 5, 0.1, 5)
+    C_8U[:, :, :3] = rgb_8U
     C_8U[:, :, 3] = A_8U
     N_32F = colorToNormal(C_8U)
     return N_32F, A_8U
