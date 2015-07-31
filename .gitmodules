@@ -1,0 +1,4 @@
+[submodule "doxygen/api_doc"]
+	path = doxygen/api_doc
+	url = https://github.com/tody411/NPR-SFS.git
+	branch = gh-pages
