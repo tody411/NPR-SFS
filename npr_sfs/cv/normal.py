@@ -15,8 +15,7 @@ from npr_sfs.util.timer import timing_func
 
 
 ## RGBA to normal.
-@timing_func
-def colorToNormal(C_8U):
+def colorToNormal(C_8U, fill_background=True):
     rgb_8U = rgb(C_8U)
     A_8U = alpha(C_8U)
 
@@ -24,9 +23,8 @@ def colorToNormal(C_8U):
 
     N_32F = 2.0 * C_32F - 1.0
 
-    N_32F = cv2.bilateralFilter(N_32F, 5, 0.1, 5)
-
-    N_32F[A_8U < 10, :] = np.array([0.0, 0.0, 0.0])
+    if fill_background:
+        N_32F[A_8U < 10, :] = np.array([0.0, 0.0, 0.0])
 
     N_32F_normalized = normalizeImage(N_32F)
 

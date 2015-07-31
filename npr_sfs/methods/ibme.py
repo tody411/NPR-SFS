@@ -21,7 +21,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 from npr_sfs.datasets.loader import dataFile
-from npr_sfs.io.image import loadRGBA, saveGray, saveRGBA
+from npr_sfs.io.image import loadRGBA, saveNormal
 from npr_sfs.cv.image import luminance, alpha
 from npr_sfs.plot.window import showMaximize
 from npr_sfs.cv.normal import normalizeImage, normalToColor
@@ -91,7 +91,7 @@ def showResult(C_8U, D_32F, N_32F, A_8U):
 def saveResult(input_file, A_8U, N_32F):
     logger.info("saveResult")
     N_file = input_file.replace(".png", "_N.png")
-    saveRGBA(normalToColor(N_32F, A_8U), N_file)
+    saveNormal(N_file, N_32F, A_8U)
 
 
 def main(input_file, output_file, quiet):

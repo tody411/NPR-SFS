@@ -21,7 +21,7 @@ from pyamg.gallery import laplacian
 
 import matplotlib.pyplot as plt
 
-from npr_sfs.io.image import loadAlpha, saveRGBA, saveGray
+from npr_sfs.io.image import loadAlpha, saveRGBA, saveGray, saveNormal
 from npr_sfs.cv.normal import normalToColor
 from npr_sfs.util.timer import timing_func
 from npr_sfs.np.norm import normalizeVectors
@@ -129,7 +129,7 @@ def saveResult(input_file, A_8U, N_32F):
     logger.info("saveResult")
 
     N_file = input_file.replace(".png", "_N.png")
-    saveRGBA(normalToColor(N_32F, A_8U), N_file)
+    saveNormal(N_file, N_32F, A_8U)
 
 
 def main(input_file, output_file, quiet):
@@ -154,4 +154,5 @@ if __name__ == '__main__':
 
     output_file = args['--output']
     quiet = args['--quiet']
+
     main(input_file, output_file, quiet)
