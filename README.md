@@ -77,14 +77,20 @@ The following **CLI** examples can be tested from npr_sfs/methods directory.
 
 ## API Document
 
-[**npr_sfs API Document**] (http://tody411.github.io/NPR-SFS/index.html)
+API document will be managed by [doxygen](http://www.stack.nl/~dimitri/doxygen/) framework.
+Online version is provided in the following link:
+* [**npr_sfs API Document**](http://tody411.github.io/NPR-SFS/index.html) (html)
+
+For a local copy, please use the following doxygen command from *doxygen* directory.
+``` bash
+  > doxygen doxygen_config
+```
 
 ## Future tasks
 
 * [ ] Update result section.
 * [ ] Implement more methods.
 * [ ] Comparison module for summarizing the results.
-* [ ] Provide API document.
 
 ## License
 
