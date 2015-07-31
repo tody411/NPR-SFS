@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-## @package npr_sfs.lumo
+## @package npr_sfs.methods.lumo
 #
 #  Lumo [Johnston et al. 2002].
 #  @author      tody

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 ## @package npr_sfs
 #
-#  Other Shape From Shading techniques.
+#  Shape-From-Shading techniques for NPR.
 #  @author      tody
 #  @date        2015/07/28
 

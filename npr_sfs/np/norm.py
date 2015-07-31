@@ -1,8 +1,8 @@
 
 # -*- coding: utf-8 -*-
-## @package inversetoon.np.norm
+## @package npr_sfs.np.norm
 #
-#  Numpy norm utility package.
+#  Numpy norm functions.
 #  @author      tody
 #  @date        2015/07/18
 

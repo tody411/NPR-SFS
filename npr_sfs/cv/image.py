@@ -2,10 +2,9 @@
 # -*- coding: utf-8 -*-
 ## @package npr_sfs.cv.image
 #
-#  OpenCV image utility package.
+#  OpenCV image functions.
 #  @author      tody
 #  @date        2015/07/29
-
 
 
 import numpy as np

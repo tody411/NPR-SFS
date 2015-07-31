@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 ## @package npr_sfs.util.timer
 #
-#  Timer utility package.
+#  Timer class, functions.
 #  @author      tody
 #  @date        2015/07/29
 

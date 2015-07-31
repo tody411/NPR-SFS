@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 ## @package npr_sfs.datasets.loader
 #
-#  Dataset loader utility package.
+#  Dataset loader functions.
 #  @author      tody
 #  @date        2015/07/29
 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 ## @package npr_sfs.cv.normal
 #
-#  Normal image utility package.
+#  Normal image functions.
 #  @author      tody
 #  @date        2015/07/29
 

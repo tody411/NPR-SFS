@@ -1,8 +1,7 @@
-
 # -*- coding: utf-8 -*-
 ## @package npr_sfs.util.logger
 #
-#  Log utility package.
+#  Simple logging.
 #  @author      tody
 #  @date        2015/07/29
 

@@ -1,8 +1,8 @@
 
 # -*- coding: utf-8 -*-
-## @package npr_sfs.cv.__init__
+## @package npr_sfs.cv
 #
-#  Utility package for OpenCV.
+#  Modules for OpenCV utility.
 #  @author      tody
 #  @date        2015/07/29
 

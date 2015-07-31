@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 ## @package npr_sfs.io.image
 #
-#  Image io utility package.
+#  Image io functions.
 #  @author      tody
 #  @date        2015/07/29
 
