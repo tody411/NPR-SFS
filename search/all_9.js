@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['cv',['cv',['../namespacenpr__sfs_1_1cv.html',1,'npr_sfs']]],
+  ['datasets',['datasets',['../namespacenpr__sfs_1_1datasets.html',1,'npr_sfs']]],
+  ['ibme',['ibme',['../namespacenpr__sfs_1_1methods_1_1ibme.html',1,'npr_sfs::methods']]],
+  ['image',['image',['../namespacenpr__sfs_1_1io_1_1image.html',1,'npr_sfs::io']]],
+  ['image',['image',['../namespacenpr__sfs_1_1cv_1_1image.html',1,'npr_sfs::cv']]],
+  ['io',['io',['../namespacenpr__sfs_1_1io.html',1,'npr_sfs']]],
+  ['lib_5fversion',['lib_version',['../namespacenpr__sfs_1_1lib__version.html',1,'npr_sfs']]],
+  ['loader',['loader',['../namespacenpr__sfs_1_1datasets_1_1loader.html',1,'npr_sfs::datasets']]],
+  ['logger',['logger',['../namespacenpr__sfs_1_1util_1_1logger.html',1,'npr_sfs::util']]],
+  ['lumo',['lumo',['../namespacenpr__sfs_1_1methods_1_1lumo.html',1,'npr_sfs::methods']]],
+  ['methods',['methods',['../namespacenpr__sfs_1_1methods.html',1,'npr_sfs']]],
+  ['norm',['norm',['../namespacenpr__sfs_1_1np_1_1norm.html',1,'npr_sfs::np']]],
+  ['normal',['normal',['../namespacenpr__sfs_1_1cv_1_1normal.html',1,'npr_sfs::cv']]],
+  ['normalconstraints',['normalConstraints',['../namespacenpr__sfs_1_1methods_1_1lumo.html#aa9a22436765a14906578b2f183bc8112',1,'npr_sfs::methods::lumo']]],
+  ['normalizeimage',['normalizeImage',['../namespacenpr__sfs_1_1cv_1_1normal.html#a054601d2277054e772ad05582dbf6ab3',1,'npr_sfs::cv::normal']]],
+  ['normalizevector',['normalizeVector',['../namespacenpr__sfs_1_1np_1_1norm.html#a5425aae8c7c2350d0072527c158cb7f6',1,'npr_sfs::np::norm']]],
+  ['normalizevectors',['normalizeVectors',['../namespacenpr__sfs_1_1np_1_1norm.html#ac730e157831a4375e0b1ea9274ba6dc9',1,'npr_sfs::np::norm']]],
+  ['normaltocolor',['normalToColor',['../namespacenpr__sfs_1_1cv_1_1normal.html#a890e8d8eac50e2af022fbf784b8d7aa1',1,'npr_sfs::cv::normal']]],
+  ['normvectors',['normVectors',['../namespacenpr__sfs_1_1np_1_1norm.html#ac1b682d00cd8ca449683e906661971f6',1,'npr_sfs::np::norm']]],
+  ['np',['np',['../namespacenpr__sfs_1_1np.html',1,'npr_sfs']]],
+  ['npr_5fsfs',['npr_sfs',['../namespacenpr__sfs.html',1,'']]],
+  ['plot',['plot',['../namespacenpr__sfs_1_1plot.html',1,'npr_sfs']]],
+  ['timer',['timer',['../namespacenpr__sfs_1_1util_1_1timer.html',1,'npr_sfs::util']]],
+  ['util',['util',['../namespacenpr__sfs_1_1util.html',1,'npr_sfs']]],
+  ['window',['window',['../namespacenpr__sfs_1_1plot_1_1window.html',1,'npr_sfs::plot']]]
+];
