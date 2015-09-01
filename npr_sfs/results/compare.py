@@ -42,7 +42,7 @@ def batch_func(data_name):
     fig.subplots_adjust(left=0.05, bottom=0.05, right=0.95, top=0.9, wspace=0.05, hspace=0.1)
 
     font_size = 15
-    fig.suptitle("Compare NPR-SFS", fontsize=font_size)
+    fig.suptitle("NPR-SFS", fontsize=font_size)
 
     num_cols = len(method_names) + 1
     fig.add_subplot(1, num_cols, 1)
