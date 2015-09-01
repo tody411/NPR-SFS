@@ -11,9 +11,13 @@ Simple Python demos of existing Shape-From-Shading methods for NPR.
 
 
 ## Result
-*Status*: Under construction.
-<!-- ### Lit-Sphere
-![Lit-Sphere](LitSphere/results/LitSphere.png) -->
+
+In the following demo, we compare **Lumo** and **IBME (Image-Based Material Editing)**.
+
+![Blob1](npr_sfs/results/Compare/Blob1.png)
+![Blob2](npr_sfs/results/Compare/Blob2.png)
+![ThreeBox](npr_sfs/results/Compare/ThreeBox.png)
+![Torus](npr_sfs/results/Compare/Torus.png)
 
 ## Installation
 

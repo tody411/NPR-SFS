@@ -7,7 +7,7 @@
 #  @date        2015/07/29
 
 import os
-from npr_sfs.io.image import loadAlpha
+from npr_sfs.io_util.image import loadAlpha
 
 from npr_sfs.util.logger import getLogger
 logger = getLogger(__name__)
@@ -21,7 +21,8 @@ def dataNames():
     data_names = []
 
     for image in images:
-        data_names.append(image.replace(".png", ""))
+        if ".png" in image:
+            data_names.append(image.replace(".png", ""))
     return data_names
 
 

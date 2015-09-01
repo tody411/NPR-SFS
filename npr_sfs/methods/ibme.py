@@ -21,7 +21,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 from npr_sfs.datasets.loader import dataFile
-from npr_sfs.io.image import loadRGBA, saveNormal
+from npr_sfs.io_util.image import loadRGBA, saveNormal
 from npr_sfs.cv.image import luminance, alpha
 from npr_sfs.plot.window import showMaximize
 from npr_sfs.cv.normal import normalizeImage, normalToColor

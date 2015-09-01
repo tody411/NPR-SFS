@@ -21,7 +21,7 @@ from pyamg.gallery import laplacian
 
 import matplotlib.pyplot as plt
 
-from npr_sfs.io.image import loadAlpha, saveRGBA, saveGray, saveNormal
+from npr_sfs.io_util.image import loadAlpha, saveRGBA, saveGray, saveNormal
 from npr_sfs.cv.normal import normalToColor
 from npr_sfs.util.timer import timing_func
 from npr_sfs.np.norm import normalizeVectors

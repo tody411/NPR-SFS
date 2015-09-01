@@ -50,6 +50,9 @@ def rgb(img):
 
 ## Alpha channel of the image.
 def alpha(img):
+    if img is None:
+        return None
+
     if len(img.shape) == 2:
         return None
 
