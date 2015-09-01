@@ -57,3 +57,8 @@ Temporary Items
 # doxygen
 # doxygen/api_doc
 doxygen/*.bat
+
+# Results
+npr_sfs/results/Lumo/*
+npr_sfs/results/IBME/*
+
