@@ -82,7 +82,10 @@ def normalConstraints(A_8U, N0_32F, alpha_th=20, w_sil=1e+10):
 
     N0_flat = N0_32F.reshape(h * w, 3)
     N0_flat[A_flat > alpha_th, :] = 0.0
-    b = w_sil * N0_flat
+    
+    b_all = w_sil * N0_flat
+    b = np.zeros(b_all.shape)
+    b[A_flat < alpha_th, :] = b_all[A_flat < alpha_th, :]
 
     return A, b
 
